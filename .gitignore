@@ -9,6 +9,8 @@
 *.idb
 *.ilk
 *.old
+.idea
+cmake-build-debug
 build
 Debug
 *~

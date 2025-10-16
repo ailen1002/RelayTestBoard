@@ -20,7 +20,7 @@ int main(void)
 
     while (count++)
     {
-        LOG_D("Hello RT-Thread!");
+        LOG_D("你好，世界!");
         rt_thread_mdelay(1000);
     }
 
