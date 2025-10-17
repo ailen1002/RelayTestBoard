@@ -213,6 +213,7 @@ SET(PROJECT_SOURCES
 		drivers/drv_wdt.c
 
 		applications/main.c
+		applications/u_port.c
 )
 
 LINK_LIBRARIES(

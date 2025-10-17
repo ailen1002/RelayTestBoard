@@ -13,16 +13,38 @@
 #define DBG_TAG "main"
 #define DBG_LVL DBG_LOG
 #include <rtdbg.h>
+#include "u_port.h"
 
 int main(void)
 {
-    int count = 1;
+	LOG_I("Resistance Test Board and Digital Output Board");
 
-    while (count++)
+	u_port_init();
+
+	extern int vbc_modbus_rtu_slave_thread(void);
+
+	if (vbc_modbus_rtu_slave_thread() != RT_EOK)
+	{
+		LOG_E("Failed to start Modbus RTU slave thread.");
+		return -1;
+	}
+
+    while (1)
     {
-        LOG_D("你好，世界!");
-        rt_thread_mdelay(1000);
-    }
+		for (int i = 0; i < 16; i++)
+		{
+			if ((PINS_WORD >> i) & 0x01)
+			{
+				rt_pin_write(DO_PINS[i], PIN_HIGH);
+				LOG_I("DO%d set to HIGH", i + 1);
+			}
+			else
+			{
+				rt_pin_write(DO_PINS[i], PIN_LOW);
+				LOG_I("DO%d set to LOW", i + 1);
+			}
+		}
 
-    return RT_EOK;
+		rt_thread_mdelay(50);
+    }
 }
