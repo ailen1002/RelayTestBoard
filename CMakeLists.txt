@@ -45,6 +45,7 @@ include_directories(
 		${CMAKE_SOURCE_DIR}/drivers
 		${CMAKE_SOURCE_DIR}/drivers/include
 		${CMAKE_SOURCE_DIR}/drivers/include/config
+		${CMAKE_SOURCE_DIR}/modbus
 		${CMAKE_SOURCE_DIR}/libraries/CMSIS/Device/ST/STM32F1xx/Include
 		${CMAKE_SOURCE_DIR}/libraries/CMSIS/Include
 		${CMAKE_SOURCE_DIR}/libraries/CMSIS/RTOS/Template
@@ -182,6 +183,14 @@ SET(PROJECT_SOURCES
 		# === CMSIS ===
 		libraries/CMSIS/Device/ST/STM32F1xx/Source/Templates/gcc/startup_stm32f103xe.S
 		libraries/CMSIS/Device/ST/STM32F1xx/Source/Templates/system_stm32f1xx.c
+
+		# === drivers / modbus ===
+		modbus/vbc_rtu_mb_core.c
+		modbus/vbc_rtu_mb_base.c
+		modbus/vbc_rtu_mb_utils.c
+		modbus/vbc_rtu_mb_port_rtthread.c
+		modbus/vbc_rtu_mb_slave_app.c
+		modbus/vbc_rtu_virtualIO.c
 
 		# === Board / Application ===
 		drivers/board.c
