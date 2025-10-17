@@ -21,6 +21,8 @@
 rt_base_t DO_PINS[] = {DO1, DO2, DO3, DO4, DO5, DO6, DO7, DO8,
 					   DO9, DO16, DO15, DO14, DO13, DO10, DO11, DO12};
 
+volatile rt_uint16_t PINS_WORD = 0x0000;
+
 void u_port_init(void)
 {
 	for (int i = 0; i < sizeof(DO_PINS) / sizeof(DO_PINS[0]); i++)
